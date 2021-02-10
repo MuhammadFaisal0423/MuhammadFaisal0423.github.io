@@ -1,0 +1,546 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Pengolahan data mengaji berbasis web</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@700&family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                list-style: none;
+                text-decoration: none;
+            }
+            body{
+                color: white;
+                background-color: rgb(1, 18, 94);
+            }
+
+            .container{
+                display: grid;
+                grid-template-areas: "header" "main" "footer";
+            }
+
+            header{
+                grid-area: header;
+                background: radial-gradient(ellipse at top right, rgb(135, 157, 255), transparent),
+            radial-gradient(ellipse at bottom, rgb(1, 18, 94), transparent);
+            }
+
+            nav{
+                position: absolute;
+                top: 0; 
+                height: 120px;
+                width: 100%; 
+                align-items: center;
+                display: grid;
+                grid-template-columns: .7fr 1fr;
+            }
+
+            nav a.brand{
+                color: white;
+                font-weight: bold;
+                font-size: 30px;
+                justify-self: center;
+                font-family: 'Lobster', cursive;
+                letter-spacing: 1.5px;
+            }
+
+            nav .nav-container{
+                display: grid;
+                grid-template-columns: 1fr .75fr;
+                justify-content: center;
+            }
+
+            nav .nav-container ul {
+                font-family: 'Roboto', sans-serif;                
+                font-size: 15px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit,minmax(50px,100px));
+            }
+
+            nav .nav-container ul.BeMeTe{
+                font-size: 16px;
+                justify-content: center;
+            }
+
+            nav .nav-container ul.MaDa{
+                gap: 10px;
+            }
+
+            nav .nav-container ul.MaDa li a{
+                background-color: rgb(250, 250, 250);
+                color: #111;
+                border-radius: 25px;
+                padding: 6px 25px;
+                
+            }
+
+            nav .nav-container ul.BeMeTe li a {
+                color: white;
+                padding: 10px 15px;
+                border-radius: 12px;
+            }
+
+            nav .nav-container ul.BeMeTe li a.active,
+            nav .nav-container ul.BeMeTe li a:hover {
+                color: #999;
+                transition: 0.15s;
+            }
+
+            nav .nav-container ul.MaDa li a.active,
+            nav .nav-container ul.MaDa li a:hover{
+                background-color: rgb(170, 170, 170);
+                transition: 0.25s;
+            }
+
+            nav input#checkbox{
+                display: none;
+            }
+
+            nav label.menu-toggle {
+                margin-right: 2vw;
+                display: none;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 20px;
+                cursor: pointer;
+            }
+
+            nav label.menu-toggle span {
+                display: block;
+                border-radius: 5px;
+                width: 28px;
+                height: 3px;
+                background-color: white;
+                transition: all 0.5s;
+            }
+
+            /* Hamburger Animation */
+            nav label.menu-toggle span:first-child {
+                transform-origin: 0 1px;
+            }
+
+            nav input:checked ~ label.menu-toggle span:first-child {
+                transform: rotate(45deg) translate(-1px, -1px);
+            }
+
+            nav label.menu-toggle span:last-child {
+                transform-origin: 0 0;
+            }
+
+            nav label.menu-toggle span:nth-child(2) {
+                transform-origin: 0 0;
+            }
+
+            nav input:checked ~ label.menu-toggle span:nth-child(2) {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            nav input:checked ~ label.menu-toggle span:last-child {
+                transform: rotate(-45deg) translate(-1px, 0);
+            }
+
+            /* End Hamburger Menu */
+
+            header .header-main{
+                grid-area: header-main;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                justify-items: center;
+                min-height: 500px;
+                margin-top: 80px;
+                padding: 0 15px;
+            }
+
+            header .header-main .header-text h2{
+                font-size: 30px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 700;  
+                text-transform: uppercase; 
+            }
+
+            header .header-main .header-text p{
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            main{
+                color: black;
+                grid-area: main;
+                min-height: 1000px;
+                padding: 100px 0;
+                background-color: #fff;
+            }
+
+            main .container .main-section-1{
+                display: grid;
+                text-align: center;
+                grid-template-rows: 1fr 2fr 1fr;
+            }
+
+            main .container .main-section-1 .title-1 h2{
+                color: rgb(0, 28, 155);
+                font-size: 35px;
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            main .container .main-section-1 .title-1 p{
+                color: rgb(111, 130, 218);
+                font-size: 15px;
+                font-family: 'Roboto', sans-serif;
+                margin-top: 20px;
+            }
+
+            main .container .main-section-1 .features-1 ul{
+                display: grid;
+                justify-items: center;
+                grid-template-columns: repeat(auto-fit,minmax(10vw,1fr));
+                gap: 20px;
+                width: 70vw;
+                margin: 0 auto;
+            }
+
+            main .container .main-section-1 .features-1 ul li{
+                min-height: 300px;
+                max-width: 225px;
+                min-width: 150px;
+                box-shadow: 0 0 5px black;
+                border-radius: 10px;
+                padding: 15px;
+            }
+
+            main .container .main-section-1 .features-1 ul h3{
+                color: rgb(65, 104, 212);
+                font-size: 18px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+
+            main .container .main-section-1 .features-1 ul li p{
+                margin-top: 10px;
+                color: rgb(109, 144, 240);
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            main .container .main-section-1 .gabung-sekarang{
+                /* background-color: red; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            main .container .main-section-1 .gabung-sekarang a{
+                font-size: 24px;
+                color: rgb(255, 255, 255);
+                background-color: rgb(80, 155, 253);
+                border-radius: 10px;
+                padding: 15px 20px;
+                /* box-shadow: 0 0 5px black; */
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+
+            }
+
+            main .container .main-section-1 .gabung-sekarang a:hover{
+                background-color: rgb(31, 122, 241);
+                box-shadow: 0 0 5px black;
+                transition: .2s;
+
+            }
+
+            footer{
+                grid-area: footer;
+                min-height: 350px;
+                background: radial-gradient(ellipse at top right, rgb(146, 158, 211), transparent),
+            radial-gradient(ellipse at bottom, rgb(1, 18, 94), transparent);
+                display: grid;
+                grid-template-rows: 1fr .1fr;
+                font-family: 'Roboto', sans-serif;
+                padding: 0 25px;
+            }
+
+            footer .container-footer{
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+            }
+
+            footer .container-footer .container-footer-left{
+                display: grid;
+                grid-template-columns: repeat(4,1fr);            
+                margin-top: 60px;
+                gap: 50px 30px;
+                justify-self: center;
+            }
+
+            footer .container-footer .container-footer-left ul h4{
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+
+            footer .container-footer .container-footer-left ul li a{
+                line-height: 20px;
+                color: #ccc;
+            }
+
+            footer .container-footer .container-footer-left ul li a:hover{
+                color: #999;
+                transition: 0.15s;
+            }
+
+            footer .container-footer .container-footer-right{
+                justify-self: center;
+                text-align: center;
+                margin-top: 50px;
+                line-height: 30px;
+            }
+
+            footer p.copy{
+                text-align: center;
+            }
+            /* Tablet Mode */
+            @media (max-width : 1000px){
+                nav{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 30px;
+                    position: fixed;
+                    background-color: rgb(71, 98, 255) ;
+                    box-shadow: 0 0 5px black;
+                    height: 80px;
+                    transition: .5s;
+                    overflow: visible;
+                }
+
+                nav .nav-container{
+                    display: grid;
+                    grid-template-rows: repeat(auto-fit,minmax(100px,1fr));
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100vh;
+                    background-color:rgb(0, 27, 182);
+                    position: absolute;
+                    top: -500%;
+                    left: 0;
+                    transition: all .75s;
+                    gap: 50px 0px;
+                    z-index: -1;
+                }
+
+                nav .nav-container{
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                nav .nav-container ul{
+                    gap: 10px;
+                }
+
+                nav .nav-container ul.MaDa{
+                    gap: 20px 0;
+                }
+            
+                nav input#checkbox:checked ~ .nav-container{
+                    top: 0;
+                    opacity: 1;
+                }
+
+                nav label.menu-toggle{
+                    display: flex;
+                }
+            }
+            /* Mobile Mode */
+            @media (max-width : 750px){
+                header .header-main{
+                    overflow: hidden;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 0.7fr 1fr;
+                    text-align: center;
+                    min-height: 500px;
+                    margin: 80px auto;
+                    padding: 0 15px;
+                }
+
+                header .header-main img{
+                    width: 300px;
+                }
+
+                header .header-main .header-text{
+                    width: 80%;
+                    font-size: 20px;
+                }
+
+                main .container .main-section-1{
+                    grid-template-rows: 1fr;
+                    gap: 25px;
+                }
+
+                main .container .main-section-1 .features-1{
+                    grid-template-rows: .5fr 1fr;
+                }
+
+                main .container .main-section-1 .features-1 ul{
+                    grid-template-columns: 1fr;
+                }
+
+                main .container .main-section-1 .features-1 ul li{
+                    grid-template-columns: 1fr;
+                    height: 300px;
+                    width: 250px;
+                }
+
+                footer{
+                    grid-template-rows: 1fr .05fr;
+                }
+
+                footer .container-footer{
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                footer .container-footer .container-footer-left{
+                    grid-template-columns: 1fr;
+                    gap: 20px 20px;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="" class="brand">AyoMengaji</a>
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox" class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                <div class="nav-container">
+                    <ul class="BeMeTe">
+                        <li><a href="1">Beranda</a></li>
+                        <li><a href="2">Mengaji</a></li>
+                        <li><a href="3">Tentang</a></li>
+                        
+                    </ul>
+                    <ul class="MaDa">
+                        <li><a href="4">Masuk</a></li>
+                        <li><a href="5">Daftar</a></li>
+                    </ul>
+                </div>
+                
+            </nav>
+            <header>
+                <div class="header-main">
+                    <div class="header-text">
+                        <h2>Selamat Datang di Ayo Mengaji</h2>
+                        <p>Ada banyak keuntungan membuat jurnal mengaji di web ini.</p>
+                    </div>
+                    <img src="img/recite_quran_1.png" alt="" width="400">
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,202.7C384,213,480,203,576,170.7C672,139,768,85,864,85.3C960,85,1056,139,1152,176C1248,213,1344,235,1392,245.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            </header>
+            
+            <main>
+                <div class="container">
+                    <div class="main-section-1">
+                        <div class="title-1">
+                            <h2>Buruan Gabung!</h2>
+                            <p>Ada Banyak keuntungan jika kalian bergabung di web ini.</p>
+                        </div>
+                        <div class="features-1">
+                            <ul>
+                                <li>
+                                    <img src="img/free-.png" alt="" width="120">
+                                    <h3>Gratis</h3>
+                                    <p>Anda tidak perlu repot membeli buku jurnal mengaji.</p>
+                                </li>
+                                <li>
+                                    <img src="img/shield.png" alt="" width="120">
+                                    <h3>Data Aman</h3>
+                                    <p>tidak ada lagi istilah basah, sobek, atau hilang karena sudah menggunakan sistem digital.</p>
+                                </li>
+                                <li>
+                                    <img src="img/easy-.png" alt="" width="140">
+                                    <h3>Praktis</h3>
+                                    <p>Anda tinggal mengisi tabel yang sudah tersedia.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="gabung-sekarang">
+                            <a href="">Gabung sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="container-footer">
+                    <div class="container-footer-left">
+                        <ul class="AngtKel">
+                            <h4>Anggota Kelompok</h4>
+                            <li>
+                                <a href="">Asyifa Namirah</a>
+                            </li>
+                            <li>
+                                <a href="">A. Ramadhan</a>
+                            </li>
+                            <li>
+                                <a href="">Fitria Sari</a>
+                            </li>
+                            <li>
+                                <a href="">Muh Faisal</a>
+                            </li>
+                            <li>
+                                <a href="">M. Rizaldi P.F</a>
+                            </li>
+                            <li>
+                                <a href="">Siti Zubaidah .A</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Fitur">
+                            <h4>Fitur</h4>
+                            <li>
+                                <a href="">Mengaji</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Anggota">
+                            <h4>Area Anggota</h4>
+                            <li>
+                                <a href="">Daftar</a>
+                            </li>
+                            <li>
+                                <a href="">Masuk</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Support">
+                            <h4>Dukungan</h4>
+                            <li>
+                                <a href="">Tentang</a>
+                            </li>
+                            <li>
+                                <a href="">Tanggapan</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="container-footer-right">
+                        <h4>Terima Kasih</h4>
+                        <img src="img/Logo-SMKN-1-Fix.png" alt="" width="150">
+                        <p>SMKN 1 Banjarmasin</p>
+                    </div>
+                </div>
+                <p class="copy">&copy; 2021 AyoMengaji • All rights reserved •</p>
+            </footer>
+        </div>
+    </body>
+</html>
