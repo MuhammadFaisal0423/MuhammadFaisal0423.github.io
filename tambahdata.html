@@ -1,0 +1,254 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Halaman Masuk</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@700&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="layout.css">
+        <style>
+            main{
+                color: black;
+                grid-area: main;
+                min-height: 1000px;
+                padding: 100px 50px;
+                margin-top: 30px;
+                background-color: rgb(1, 18, 94);
+            }
+
+            main .container {
+                width: 450px;
+                margin: 0 auto;
+                border-radius: 10px;
+                box-shadow: 0 0 10px black;
+                min-height: 550px;
+                background-color: rgb(211, 211, 211);
+                padding: 25px;
+            }
+
+            main .container .kembali a{
+                color: white;
+                background-color: blue;
+                padding: 5 10px;
+                border-radius: 0 20px 20px 0;
+                transition: .2s;
+            }
+
+            main .container .kembali a:hover,
+            main .container .kembali a.active{
+                color: white;
+                background-color: rgb(0, 0, 199);
+                padding: 5 10px;
+                border-radius: 0 20px 20px 0;
+            }
+
+            main .container .tambahMengaji-title {
+                text-align: center;
+                font-family:sans-serif;
+            }
+
+            main .container .tambahMengaji-title h4 {
+                margin-bottom: 0.5rem;
+                line-height: 30x;
+                font-size: 30px;
+                color: rgb(43, 43, 43);
+            }
+
+            main .container .tambahMengaji-title h6 {
+                margin-bottom: 0.5rem;
+                color: grey;
+                font-size: 16px;
+            }
+
+            main .container form {
+                display: block;
+                margin-top: 20px;
+            }
+
+            main .container form .form-group {
+                color: grey;
+                margin-bottom: 20px;
+            }
+
+            main .container form .form-group label {
+                font-family: sans-serif;
+                font-size: 18px;
+                letter-spacing: 1px;
+                line-height: 1.5;
+            }
+
+            main .container form .form-group input {
+                font-size: 15px;
+                width: 100%;
+                height: 40px;
+                border-radius: 5px;
+                border: 1px solid grey;
+                padding: 10px;
+                margin: 0;
+                color: grey;
+            }
+
+            main .container form .form-group input:focus {
+                outline: none;
+                border: 3px solid rgb(142, 172, 255);
+            }
+
+            main .container .btn-form {
+                margin-top: 30px;
+                width: 100%;
+            }
+
+            main .container .btn-tambahMengaji {
+                margin-right: 50px;
+            }
+
+            main .container .btn-tambahMengaji button#tambahMengaji {
+                letter-spacing: 1px;
+                font-size: 15px;
+                padding: 10px 25px;
+                color: white;
+                border: 0;
+                border-radius: 5px;
+                background-color: royalblue;
+                cursor: pointer;
+            }
+
+            main .container .btn-tambahMengaji button#tambahMengaji:focus {
+                outline: none;
+            }
+
+            @media (max-width : 750px){
+                main .container {
+                    width: 100%;
+                    padding: 0;
+                    padding:25px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="brand">AyoMengaji</a>
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox" class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                <div class="nav-container">
+                    <ul class="BeMeTe">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="mengaji.html">Mengaji</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>       
+                    </ul>
+                    <ul class="MaDa">
+                        <li><a href="login.html">Masuk</a></li>
+                        <li><a href="register.html">Daftar</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <main> 
+                <div class="container">
+                    <div class="kembali">
+                        <a href="mengaji.html">
+                            <=
+                        </a>
+                    </div>
+                    <div class="tambahMengaji-title">
+                        <h4>Tambah Mengaji</h4>
+                        <h6>Masukkan data disini untuk Menambah</h6>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="Surah">
+                                Nama Surah
+                            </label>
+                            <input type="text" id="Surah">
+                        </div>
+                        <div class="form-group">
+                            <label for="Ayat">
+                                Ayat
+                            </label>
+                            <input type="number" id="Ayat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Juz">
+                                Juz
+                            </label>
+                            <input type="number" id="Juz">
+                        </div>
+                        <div class="form-group">
+                            <label for="Date">
+                                Tanggal
+                            </label>
+                            <input type="date" id="Date" required>
+                        </div>
+                        <div class="btn-b btn-tambahMengaji">
+                            <button id="tambahMengaji">Tambah</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            <footer>
+                <div class="container-footer">
+                    <div class="container-footer-left">
+                        <ul class="AngtKel">
+                            <h4>Anggota Kelompok</h4>
+                            <li>
+                                <a href="">Asyifa Namirah</a>
+                            </li>
+                            <li>
+                                <a href="">A. Ramadhan</a>
+                            </li>
+                            <li>
+                                <a href="">Fitria Sari</a>
+                            </li>
+                            <li>
+                                <a href="">Muh Faisal</a>
+                            </li>
+                            <li>
+                                <a href="">M. Rizaldi P.F</a>
+                            </li>
+                            <li>
+                                <a href="">Siti Zubaidah .A</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Fitur">
+                            <h4>Fitur</h4>
+                            <li>
+                                <a href="mengaji.html">Mengaji</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Anggota">
+                            <h4>Area Anggota</h4>
+                            <li>
+                                <a href="register.html">Daftar</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Masuk</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Support">
+                            <h4>Dukungan</h4>
+                            <li>
+                                <a href="tentang.html">Tentang</a>
+                            </li>
+                            <li>
+                                <a href="">Tanggapan</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="container-footer-right">
+                        <h4>Terima Kasih</h4>
+                        <img src="img/Logo-SMKN-1-Fix.png" alt="" width="150">
+                        <p>SMKN 1 Banjarmasin</p>
+                    </div>
+                </div>
+                <p class="copy">&copy; 2021 AyoMengaji • All rights reserved •</p>
+            </footer>
+        </div>
+    </body>
+</html>

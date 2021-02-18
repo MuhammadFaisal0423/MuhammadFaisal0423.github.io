@@ -1,0 +1,227 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Halaman Masuk</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@700&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="layout.css">
+        <style>
+            main{
+                color: black;
+                grid-area: main;
+                min-height: 1000px;
+                padding: 100px 50px;
+                margin-top: 30px;
+                background-color: rgb(1, 18, 94);
+            }
+
+            main .container{
+                min-height: 1000px;
+                width: 600px;
+                background-color: rgb(45, 143, 255);
+                margin: 0 auto;
+                display: grid;
+                grid-template-rows: .1fr .05fr 1fr;
+                border-radius: 12px;
+            }
+
+            main .container .insert-data{
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            main .container .insert-data a{
+                color: white;
+                background-color: rgb(27, 184, 66);
+                padding: 10px 15px;
+                border-radius: 5px;
+                text-transform: uppercase;
+                font-family: sans-serif;
+                transition: .3s;
+            }
+
+            main .container .insert-data a:hover,
+            main .container .insert-data a.active{
+                box-shadow: 0px 0px 5px black;
+                background-color: rgb(58, 167, 85);
+                
+            }
+
+            main .container .recite-title{
+                padding: 15px;
+                text-align: center;
+                font-size: 1.5em;
+                color: white;
+                text-transform: uppercase;
+                font-family: sans-serif;
+                letter-spacing: 1px;
+            }
+
+            main .container .recite-table-data{
+                box-shadow: 0 0 10px black;
+                border-radius: 10px;
+                background-color: rgb(68, 130, 245);
+                height: 90%;
+                width: 80%;
+                margin: 0 auto;
+                overflow-y: scroll;
+            }
+
+            main .container .recite-table-data table{
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            main .container .recite-table-data thead tr th {
+                position: sticky;
+                top: 0;
+                color: white;
+                padding: 10px;
+                background-color: rgb(87, 165, 255);
+                text-align: center;
+            }
+
+            main .container .recite-table-data table td {
+                color: white;
+                padding: 0.25rem;
+                text-align: center;
+            }
+
+            main .container .recite-table-data table tbody {
+                overflow-y: hidden;
+            }
+
+            main .container .recite-table-data table > tr td ul {
+                padding: 10px 0px;
+            }
+
+            @media (max-width : 750px){
+                main{
+                    padding: 100px 10px;
+                }
+                main .container{
+                    width: 95%;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="brand">AyoMengaji</a>
+                    <input type="checkbox" id="checkbox">
+                    <label for="checkbox" class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                <div class="nav-container">
+                    <ul class="BeMeTe">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="mengaji.html">Mengaji</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>       
+                    </ul>
+                    <ul class="MaDa">
+                        <li><a href="login.html">Masuk</a></li>
+                        <li><a href="register.html">Daftar</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <main> 
+                <div class="container">
+                    <div class="recite-title">
+                        <h3>Tabel Mengaji</h3>
+                    </div>
+                    <div class="insert-data">
+                        <a href="tambahdata.html">Tambah</a>
+                    </div>
+                    <div class="recite-table-data">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NO.</th>
+                                    <th>Nama Surah</th>
+                                    <th>Ayat Terakhir</th>
+                                    <th>Opsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1.</td>
+                                    <td>Al-Fatihah</td>
+                                    <td>30</td>
+                                    <td class="opsi">
+                                        <ul>
+                                            <li><a href="">Detail</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <div class="container-footer">
+                    <div class="container-footer-left">
+                        <ul class="AngtKel">
+                            <h4>Anggota Kelompok</h4>
+                            <li>
+                                <a href="">Asyifa Namirah</a>
+                            </li>
+                            <li>
+                                <a href="">A. Ramadhan</a>
+                            </li>
+                            <li>
+                                <a href="">Fitria Sari</a>
+                            </li>
+                            <li>
+                                <a href="">Muh Faisal</a>
+                            </li>
+                            <li>
+                                <a href="">M. Rizaldi P.F</a>
+                            </li>
+                            <li>
+                                <a href="">Siti Zubaidah .A</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Fitur">
+                            <h4>Fitur</h4>
+                            <li>
+                                <a href="mengaji.html">Mengaji</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Anggota">
+                            <h4>Area Anggota</h4>
+                            <li>
+                                <a href="register.html">Daftar</a>
+                            </li>
+                            <li>
+                                <a href="login.html">Masuk</a>
+                            </li>
+                        </ul>
+        
+                        <ul class="Support">
+                            <h4>Dukungan</h4>
+                            <li>
+                                <a href="tentang.html">Tentang</a>
+                            </li>
+                            <li>
+                                <a href="">Tanggapan</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="container-footer-right">
+                        <h4>Terima Kasih</h4>
+                        <img src="img/Logo-SMKN-1-Fix.png" alt="" width="150">
+                        <p>SMKN 1 Banjarmasin</p>
+                    </div>
+                </div>
+                <p class="copy">&copy; 2021 AyoMengaji • All rights reserved •</p>
+            </footer>
+        </div>
+    </body>
+</html>
