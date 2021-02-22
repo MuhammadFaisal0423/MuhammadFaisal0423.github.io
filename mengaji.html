@@ -18,7 +18,11 @@
             main .container{
                 min-height: 1000px;
                 width: 600px;
-                background-color: rgb(45, 143, 255);
+                background: radial-gradient(
+                ellipse at top right,
+                rgb(135, 157, 255),
+                rgb(40, 107, 207)
+                );
                 margin: 0 auto;
                 display: grid;
                 grid-template-rows: .1fr .05fr 1fr;
@@ -60,11 +64,16 @@
             main .container .recite-table-data{
                 box-shadow: 0 0 10px black;
                 border-radius: 10px;
-                background-color: rgb(68, 130, 245);
+                background-color: rgba(255, 255, 255, .25);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border: 1px solid rgba(255, 255, 255, .18);
                 height: 90%;
                 width: 80%;
                 margin: 0 auto;
                 overflow-y: scroll;
+                border-left: 2px solid rgba(255, 255, 255, .5);
+                border-top: 2px solid rgba(255, 255, 255, .5);
             }
 
             main .container .recite-table-data table{
@@ -77,8 +86,10 @@
                 top: 0;
                 color: white;
                 padding: 10px;
-                background-color: rgb(87, 165, 255);
                 text-align: center;
+                background-color: rgba(39, 145, 216, 0.25);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
             }
 
             main .container .recite-table-data table td {
@@ -97,10 +108,14 @@
 
             @media (max-width : 750px){
                 main{
-                    padding: 100px 10px;
+                    padding: 100px 0;
                 }
                 main .container{
-                    width: 95%;
+                    width: 100%;
+                }
+
+                main .container .recite-table-data{
+                    width: 90%;
                 }
             }
 

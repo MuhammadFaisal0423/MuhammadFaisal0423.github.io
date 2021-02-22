@@ -28,7 +28,7 @@
             main .container .kembali a{
                 color: white;
                 background-color: blue;
-                padding: 5 10px;
+                padding: 5px 10px;
                 border-radius: 0 20px 20px 0;
                 transition: .2s;
             }
@@ -44,6 +44,7 @@
             main .container .tambahMengaji-title {
                 text-align: center;
                 font-family:sans-serif;
+                margin-top: 5px;
             }
 
             main .container .tambahMengaji-title h4 {
@@ -117,6 +118,10 @@
             }
 
             @media (max-width : 750px){
+                main{
+                    margin: 0;
+                    padding: 125px 5px;
+                }
                 main .container {
                     width: 100%;
                     padding: 0;
@@ -151,7 +156,7 @@
                 <div class="container">
                     <div class="kembali">
                         <a href="mengaji.html">
-                            <=
+                            Kembali
                         </a>
                     </div>
                     <div class="tambahMengaji-title">
@@ -167,7 +172,7 @@
                         </div>
                         <div class="form-group">
                             <label for="Ayat">
-                                Ayat
+                                Ayat Terakhir
                             </label>
                             <input type="number" id="Ayat" required>
                         </div>

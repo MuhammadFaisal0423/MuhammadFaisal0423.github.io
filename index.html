@@ -6,6 +6,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@700&family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="layout.css">
         <style>
+            header {
+            grid-area: header;
+            background: radial-gradient(
+                ellipse at top right,
+                rgb(135, 157, 255),
+                transparent
+                ),
+                radial-gradient(ellipse at bottom, rgb(1, 18, 94), transparent);
+            }
+            
             header .header-main{
                 grid-area: header-main;
                 display: grid;
@@ -37,7 +47,6 @@
                 grid-area: main;
                 min-height: 1000px;
                 padding: 100px 0;
-                background-color: #fff;
             }
 
             main .container .main-section-1{
